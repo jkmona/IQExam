@@ -27,7 +27,6 @@ class UserTableSeeder extends Seeder {
         DB::table('iq_user')->delete();
         User::create([
             'nickname' => '李锐',
-            'wechat_open_id' => '',
             'password' => md5('1210311232'.'f3234a'),
             'salt'=> 'f3234a',
             'is_admin' => 0
@@ -35,7 +34,6 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'nickname' => '陈曦',
-            'wechat_open_id' => '',
             'password' => md5('1210311233'.'121hj1'),
             'salt'=> '121hj1',
             'is_admin' => 0
@@ -43,7 +41,6 @@ class UserTableSeeder extends Seeder {
 
         User::create([
             'nickname' => '管理员',
-            'wechat_open_id' => '',
             'password' => md5('root'.'bfg234'),
             'salt'=> 'bfg234',
             'is_admin' => 1

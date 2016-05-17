@@ -28,8 +28,7 @@ class UserTableSeeder extends Seeder {
         User::create([
             'nickname' => '李锐',
             'password' => md5('1210311232'.'f3234a'),
-            'salt'=> 'f3234a',
-            'is_admin' => 0
+            'salt'=> 'f3234a'
         ]);
 
         User::create([
@@ -42,8 +41,7 @@ class UserTableSeeder extends Seeder {
         User::create([
             'nickname' => '管理员',
             'password' => md5('root'.'bfg234'),
-            'salt'=> 'bfg234',
-            'is_admin' => 1
+            'salt'=> 'bfg234'
         ]);
 
     }

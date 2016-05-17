@@ -12,7 +12,7 @@ class CreateTestTable extends Migration {
      */
     public function up()
     {
-        Schema::create('iq_test', function(Blueprint $table)
+        Schema::create('iq_user_test', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
             $table->increments('test_id');
@@ -36,14 +36,14 @@ class CreateTestTable extends Migration {
      * @return void
      */
     public function down() {
-        if (Schema::hasTable('iq_test'))  {
-            Schema::table('iq_test', function(Blueprint $table)
+        if (Schema::hasTable('iq_user_test'))  {
+            Schema::table('iq_user_test', function(Blueprint $table)
             {
-                $table->dropForeign('iq_test_user_id_foreign');
-                $table->dropForeign('iiq_test_level_question_id_foreign');
+                $table->dropForeign('iq_user_test_user_id_foreign');
+                $table->dropForeign('iq_user_test_question_id_foreign');
             });
         }
-        Schema::dropIfExists('iq_test');
+        Schema::dropIfExists('iq_user_test');
     }
 
 }

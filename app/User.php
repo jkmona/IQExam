@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['wechat_open_id', 'phone', 'email', 'account', 'password', 'salt', 'fullName', 'nickname', 'gender', 'birthday', 'active', 'user_group'];
+	protected $fillable = [ 'phone', 'email', 'account', 'password', 'salt', 'fullName', 'nickname', 'gender', 'birthday', 'active', 'user_group'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

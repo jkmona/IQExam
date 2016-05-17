@@ -15,7 +15,7 @@ class CreateBaseAttributeTable extends Migration {
 		Schema::create('iq_base_attribute', function(Blueprint $table)
 		{
             $table->engine ='InnoDB';
-			$table->increments('id');
+			$table->increments('base_id');
             $table->string('key',200);
             $table->string('value',200);
             $table->tinyInteger('sort', false, true);

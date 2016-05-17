@@ -15,7 +15,7 @@ class CreateUserLogTable extends Migration {
         Schema::create('iq_user_log', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('id');
+            $table->increments('user_log_id');
             $table->unsignedInteger('user_id');
             $table->tinyInteger('type',false,true);
             $table->string('action', 500);
@@ -23,10 +23,9 @@ class CreateUserLogTable extends Migration {
 
             $table->index('user_id');
 
-            $table->foreign('user_id')->references('id')->on('iq_user')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('user_id')->references('user_id')->on('iq_user')->onDelete('restrict')->onUpdate('restrict');
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -34,7 +33,12 @@ class CreateUserLogTable extends Migration {
      */
     public function down()
     {
+        if (Schema::hasTable('iq_user_log'))  {
+            Schema::table('iq_user_log', function(Blueprint $table)
+            {
+                $table->dropForeign('iq_user_log_user_id_foreign');
+            });
+        }
         Schema::dropIfExists('iq_user_log');
     }
-
 }

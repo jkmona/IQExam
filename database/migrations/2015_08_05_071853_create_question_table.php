@@ -15,18 +15,25 @@ class CreateQuestionTable extends Migration {
 		Schema::create('iq_question', function(Blueprint $table)
 		{
             $table->engine ='InnoDB';
-            $table->increments('id');
-            $table->tinyInteger('type', false, true);
-            $table->tinyInteger('difficult', false, true);
-            $table->tinyInteger('category', false, true);
-            $table->string('subject',500);
-            $table->string('content',500)->nullable();
-            $table->string('answer',500);
-            $table->string('key_words',500)->nullable();
-            $table->binary('main_picture')->nullable();
+            $table->increments('question_id');
+            $table->unsignedInteger('level_id', false);
+            $table->integer('type', false, true);
+            $table->integer('difficult', false, true);
+            $table->integer('category', false, true);
+            $table->string('subject', 100);
+            $table->string('question', 200)->nullable();
+            $table->string('right_answer', 200);
+            $table->integer('points', false, true)->default(0);
+            $table->string('key_words', 200)->nullable();
+            $table->string('pic_url', 100)->nullable();
+            $table->string('pic_suffix', 10)->nullable();
+            $table->string('pic_full_url', 100)->nullable();
             $table->string('notes')->nullable();
             $table->timestamps();
-		});
+
+            $table->foreign('level_id')->references('level_id')->on('iq_level')->onDelete('restrict')->onUpdate('restrict');
+
+        });
 	}
 
 	/**

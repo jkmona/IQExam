@@ -1,10 +1,9 @@
-/vendor
-/node_modules
-/public/storage
+vendor/
+node_modules/
+storage/
 Homestead.yaml
-Homestead.json
-.env
-.env.example
+*.env
+*.env.example
 .idea/
-.pdb
-.vagrant
+*.pdb
+.vagrant/

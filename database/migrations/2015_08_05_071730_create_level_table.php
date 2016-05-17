@@ -15,12 +15,16 @@ class CreateLevelTable extends Migration {
         Schema::create('iq_level', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('id');
-            $table->string('name');
-            $table->tinyInteger('difficult', false, true)->default(0);
+            $table->increments('level_id');
             $table->unsignedInteger('parent_id');
-            $table->boolean('is_locked')->default(1);
+            $table->string('name');
+            $table->integer('difficult', false, true)->default(0);
+            $table->integer('points', false, true)->default(0);
+            $table->string('pic_url', 100)->nullable();
+            $table->string('pic_suffix', 10)->nullable();
+            $table->string('pic_full_url', 100)->nullable();
             $table->binary('picture')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -16,7 +16,7 @@ class CreateWechatTokenTable extends Migration
         {
             $table->engine ='InnoDB';
             $table->increments('wechat_token_id');
-            $table->integer('token_type');
+            $table->tinyInteger('token_type');
             $table->string('token', 100);
             $table->string('open_id', 100)->nullable();
             $table->timestamps();

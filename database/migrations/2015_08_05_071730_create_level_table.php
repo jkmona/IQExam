@@ -18,7 +18,7 @@ class CreateLevelTable extends Migration {
             $table->increments('level_id');
             $table->unsignedInteger('parent_id');
             $table->string('name');
-            $table->integer('difficult', false, true)->default(0);
+            $table->tinyInteger('difficult', false, true)->default(0);
             $table->integer('points', false, true)->default(0);
             $table->string('pic_url', 100)->nullable();
             $table->string('pic_suffix', 10)->nullable();

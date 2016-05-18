@@ -17,9 +17,9 @@ class CreateQuestionTable extends Migration {
             $table->engine ='InnoDB';
             $table->increments('question_id');
             $table->unsignedInteger('level_id', false);
-            $table->integer('type', false, true);
-            $table->integer('difficult', false, true);
-            $table->integer('category', false, true);
+            $table->tinyInteger('type', false, true);
+            $table->tinyInteger('difficult', false, true);
+            $table->tinyInteger('category', false, true);
             $table->string('subject', 100);
             $table->string('question', 200)->nullable();
             $table->string('right_answer', 200);

@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration {
             $table->string('salt',6)->nullable();
             $table->string('real_name',50)->nullable();
             $table->string('nickname',50)->nullable();
-            $table->integer('sex', false, true)->nullable();
+            $table->string('sex', 10)->nullable();
             $table->dateTime('birthday')->nullable();
             $table->integer('points', false, true)->default(0);
             $table->boolean('active')->nullable();

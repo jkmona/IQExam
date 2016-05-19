@@ -16,10 +16,10 @@ class CreateTopicTable extends Migration
         {
             $table->engine ='InnoDB';
             $table->increments('topic_id');
-            $table->unsignedInteger('question_id', false);
+            $table->unsignedInteger('question_id');
             $table->string('topic_key', 10);
             $table->string('topic_value', 200);
-            $table->unsignedInteger('sort', false);
+            $table->tinyInteger('sort', false, true);
             
             $table->foreign('question_id')->references('question_id')->on('iq_question')->onDelete('restrict')->onUpdate('restrict');
         });

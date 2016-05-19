@@ -16,18 +16,18 @@ class CreateUsersTable extends Migration {
 		{
             $table->engine ='InnoDB';
 			$table->increments('user_id');
-            $table->string('phone',15)->nullable();
-            $table->string('email',50)->nullable();
             $table->string('account',50)->nullable();
             $table->string('password',60)->nullable();
             $table->string('salt',6)->nullable();
+            $table->integer('points', false, true)->default(0);
             $table->string('real_name',50)->nullable();
+            $table->string('phone',15)->nullable();
+            $table->string('email',50)->nullable();
             $table->string('nickname',50)->nullable();
+            $table->string('avatar_url',100)->nullable();
             $table->string('sex', 10)->nullable();
             $table->dateTime('birthday')->nullable();
-            $table->integer('points', false, true)->default(0);
             $table->boolean('active')->nullable();
-            $table->tinyInteger('user_group', false, true)->nullable();
             $table->rememberToken();
 			$table->timestamps();
 		});

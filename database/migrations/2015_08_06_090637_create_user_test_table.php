@@ -19,7 +19,7 @@ class CreateTestTable extends Migration {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('question_id');
             $table->string('user_answer', 200);
-            $table->tinyInteger('pass', false, true);
+            $table->boolean('pass');
             $table->dateTime('started_at')->nullable();
             $table->dateTime('stopped_at')->nullable();
             $table->unsignedInteger('time_spent')->nullable();

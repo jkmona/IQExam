@@ -16,6 +16,7 @@ class CreateBaseAttributeTable extends Migration {
 		{
             $table->engine ='InnoDB';
 			$table->increments('base_id');
+            $table->string('base_type');
             $table->string('key',200);
             $table->string('value',200);
             $table->tinyInteger('sort', false, true);

@@ -12,7 +12,7 @@ class CreateMenuTable extends Migration
      */
     public function up()
     {
-        Schema::table('iq_menu', function (Blueprint $table) {
+        Schema::create('iq_menu', function (Blueprint $table) {
             $table->engine ='InnoDB';
             $table->increments('menu_id');
             $table->unsignedInteger('parent_id');

@@ -12,7 +12,7 @@ class CreateSystemUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('iq_system_user', function (Blueprint $table) {
+        Schema::create('iq_system_user', function (Blueprint $table) {
             $table->engine ='InnoDB';
             $table->increments('system_user_id');
             $table->unsignedInteger('role_id');

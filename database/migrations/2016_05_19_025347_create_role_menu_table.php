@@ -12,7 +12,7 @@ class CreateRoleMenuTable extends Migration
      */
     public function up()
     {
-        Schema::table('iq_role_menu', function (Blueprint $table) {
+        Schema::create('iq_role_menu', function (Blueprint $table) {
             $table->engine ='InnoDB';
             $table->unsignedInteger('role_id');
             $table->unsignedInteger('menu_id');

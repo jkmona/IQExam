@@ -8,10 +8,10 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="{{ URL::asset('css/font-awesome.min.css')}}" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="javascript/lib/bs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/javascript/lib/bs/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
     <style>
@@ -74,8 +74,8 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="javascript/lib/jquery-2.2.3.min.js"></script>
-    <script src="javascript/lib/bs/js/bootstrap.min.js"></script>
+    <script src="/javascript/lib/jquery-2.2.3.min.js"></script>
+    <script src="/javascript/lib/bs/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

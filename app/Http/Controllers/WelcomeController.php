@@ -1,37 +1,25 @@
 <?php namespace App\Http\Controllers;
+use Hash;
 use App\User;
 class WelcomeController extends Controller {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Welcome Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders the "marketing page" for the application and
-	| is configured to only allow guests. Like most of the other sample
-	| controllers, you are free to modify or remove it as you desire.
-	|
-	*/
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-        $this->middleware('guest');
+	public function __construct()	{
+        //$this->middleware('guest');
 	}
 
 	/**
 	 * Show the application welcome screen to the user.
-	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-        $expiresAt = Carbon::now()->addMinutes(10);
-        return view('welcome');
+	public function index() {
+        //Log::info('密码：'.);
+        //$expiresAt = Carbon::now()->addMinutes(10);
+        $checked = false;
+        if (Hash::check('12345678', '$2y$10$5uTKM3y4FOGhOwG2T.QQaONivMXMqY/jTz9c1/6xW2EYeNEkSUNpW')) {
+            $checked = true;
+        }
+        $data = ['checked' => $checked, 'pwd'=>bcrypt('12345678')];
+        return view('welcome',$data);
 	}
 
 }

@@ -9,6 +9,7 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <p>guest:{{Auth::guest()}}</p>
                 </div>
             </div>
         </div>

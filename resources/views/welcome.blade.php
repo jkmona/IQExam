@@ -9,6 +9,9 @@
 
                 <div class="panel-body">
                     Your Application's Landing Page.
+                    <p>pwd :12345678=>{{$pwd}}</p>
+                    <p>pwd checked:12345678=>{{$checked}}</p>
+                    <p>{{Auth::guest()}}</p>
                 </div>
             </div>
         </div>

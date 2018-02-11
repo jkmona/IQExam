@@ -1,49 +1,16 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\User;
 
-class DatabaseSeeder extends Seeder {
-
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		$this->call('UserTableSeeder');
-        $this->command->info('User table seeded!');
-	}
-
-}
-
-class UserTableSeeder extends Seeder {
-
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
-        Model::unguard();
-        DB::table('iq_user')->delete();
-        User::create([
-            'nickname' => '李锐',
-            'password' => md5('1210311232'.'f3234a'),
-            'salt'=> 'f3234a'
-        ]);
-
-        User::create([
-            'nickname' => '陈曦',
-            'password' => md5('1210311233'.'121hj1'),
-            'salt'=> '121hj1',
-            'is_admin' => 0
-        ]);
-
-        User::create([
-            'nickname' => '管理员',
-            'password' => md5('root'.'bfg234'),
-            'salt'=> 'bfg234'
-        ]);
-
+        // $this->call(UsersTableSeeder::class);
     }
-
 }

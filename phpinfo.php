@@ -5,5 +5,3 @@ echo GREETING;
 
 ECHO "Hello World!<br>";
 phpinfo();
-
-?>

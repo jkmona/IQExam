@@ -1,8 +1,9 @@
-<?php namespace App\Models;
+<?php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model {
 
-    protected $table='iq_levels';
-    //protected $fillable=['name','difficult','parent_id', 'is_locked', 'picture'];
-    protected $primaryKey = 'level_id';
+    protected $fillable=['name','difficult','parent_id', 'is_locked', 'picture'];
 }

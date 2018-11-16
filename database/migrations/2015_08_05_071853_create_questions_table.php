@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionTable extends Migration {
+class CreateQuestionsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,10 @@ class CreateQuestionTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('iq_questions', function(Blueprint $table)
+		Schema::create('questions', function(Blueprint $table)
 		{
             $table->engine ='InnoDB';
-            $table->increments('question_id');
+            $table->increments('id');
             $table->unsignedInteger('level_id', false);
             $table->tinyInteger('type', false, true);
             $table->tinyInteger('difficult', false, true);
@@ -31,7 +31,7 @@ class CreateQuestionTable extends Migration {
             $table->string('notes')->nullable();
             $table->timestamps();
 
-            $table->foreign('level_id')->references('level_id')->on('iq_level')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('restrict')->onUpdate('restrict');
 
         });
 	}
@@ -43,13 +43,13 @@ class CreateQuestionTable extends Migration {
 	 */
 	public function down()
 	{
-        if (Schema::hasTable('iq_question'))
+        if (Schema::hasTable('questions'))
         {
-            Schema::table('iq_question', function (Blueprint $table) {
+            Schema::table('questions', function (Blueprint $table) {
 
             });
         }
-        Schema::dropIfExists('iq_question');
+        Schema::dropIfExists('questions');
 
     }
 

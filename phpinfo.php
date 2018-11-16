@@ -1,6 +1,6 @@
 <?php
 
-define("GREETING", "Welcome to W3School.com.cn!");
+define("GREETING", "Welcome to my world!");
 echo GREETING;
 
 ECHO "Hello World!<br>";

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserLevelTable extends Migration
+class CreateUserLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateUserLevelTable extends Migration
      */
     public function up()
     {
-        Schema::create('iq_user_levels', function(Blueprint $table)
+        Schema::create('user_levels', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('user_level_id');
+            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('level_id');
             $table->tinyInteger('reward_state', false, true)->default(0);
@@ -26,8 +26,8 @@ class CreateUserLevelTable extends Migration
             $table->dateTime('unlocked_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('level_id')->references('level_id')->on('iq_level')->onDelete('restrict')->onUpdate('restrict');
-            $table->foreign('user_id')->references('user_id')->on('iq_user')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
 
         });
     }
@@ -39,13 +39,13 @@ class CreateUserLevelTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('iq_user_level'))  {
-            Schema::table('iq_user_level', function(Blueprint $table)
+        if (Schema::hasTable('user_levels'))  {
+            Schema::table('user_levels', function(Blueprint $table)
             {
-                $table->dropForeign('iq_user_level_level_id_foreign');
-                $table->dropForeign('iq_user_level_user_id_foreign');
+                $table->dropForeign('user_levels_level_id_foreign');
+                $table->dropForeign('user_levels_user_id_foreign');
             });
         }
-        Schema::dropIfExists('iq_user_level');
+        Schema::dropIfExists('user_levels');
     }
 }

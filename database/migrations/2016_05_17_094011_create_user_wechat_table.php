@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWechatTable extends Migration
+class CreateUserWechatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateWechatTable extends Migration
      */
     public function up()
     {
-        Schema::create('iq_wechat_members', function(Blueprint $table)
+        Schema::create('user_wechat', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('wechat_member_id');
+            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('open_id', 100);
             $table->string('union_id', 100)->nullable();
@@ -27,7 +27,7 @@ class CreateWechatTable extends Migration
             $table->string('head_img_url', 200)->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user_id')->on('iq_user')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
 
         });
     }
@@ -39,12 +39,12 @@ class CreateWechatTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('iq_wechat'))  {
-            Schema::table('iq_wechat', function(Blueprint $table)
+        if (Schema::hasTable('user_wechat'))  {
+            Schema::table('user_wechat', function(Blueprint $table)
             {
-                $table->dropForeign('iq_wechat_user_id_foreign');
+                $table->dropForeign('user_wechat_user_id_foreign');
             });
         }
-        Schema::dropIfExists('iq_wechat');
+        Schema::dropIfExists('user_wechat');
     }
 }

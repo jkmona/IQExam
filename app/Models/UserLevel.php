@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 class UserLevel extends Model {
-    protected $table = 'iq_user_levels';
-    protected $primaryKey = 'user_level_id';
+
 }

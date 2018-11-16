@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleTable extends Migration
+class CreateSystemRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('iq_roles', function (Blueprint $table) {
+        Schema::create('system_roles', function (Blueprint $table) {
             $table->engine ='InnoDB';
-            $table->increments('role_id');
+            $table->increments('id');
             $table->string('name', 50);
             $table->boolean('enabled');
             $table->timestamps();
@@ -28,9 +28,9 @@ class CreateRoleTable extends Migration
      */
     public function down()
     {
-        Schema::table('iq_role', function (Blueprint $table) {
+        Schema::table('system_roles', function (Blueprint $table) {
             //
         });
-        Schema::dropIfExists('iq_role');
+        Schema::dropIfExists('system_roles');
     }
 }

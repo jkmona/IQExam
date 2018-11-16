@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLevelTable extends Migration {
+class CreateLevelsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateLevelTable extends Migration {
      */
     public function up()
     {
-        Schema::create('iq_levels', function(Blueprint $table)
+        Schema::create('levels', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('level_id');
+            $table->increments('id');
             $table->unsignedInteger('parent_id');
             $table->string('name');
             $table->tinyInteger('difficult', false, true)->default(0);
@@ -35,14 +35,14 @@ class CreateLevelTable extends Migration {
      */
     public function down()
     {
-        if (Schema::hasTable('iq_level'))
+        if (Schema::hasTable('levels'))
         {
-            Schema::table('iq_level', function(Blueprint $table)
+            Schema::table('levels', function(Blueprint $table)
             {
 
             });
         }
-        Schema::dropIfExists('iq_level');
+        Schema::dropIfExists('levels');
     }
 
 }

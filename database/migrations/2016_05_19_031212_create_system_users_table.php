@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSystemUserTable extends Migration
+class CreateSystemUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateSystemUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('iq_system_users', function (Blueprint $table) {
+        Schema::create('system_users', function (Blueprint $table) {
             $table->engine ='InnoDB';
-            $table->increments('system_user_id');
+            $table->increments('id');
             $table->unsignedInteger('role_id');
             $table->string('account',50);
             $table->string('password',60);
@@ -27,7 +27,7 @@ class CreateSystemUserTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('role_id')->references('role_id')->on('iq_role')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('role_id')->references('id')->on('system_roles')->onDelete('restrict')->onUpdate('restrict');
 
         });
     }
@@ -39,12 +39,12 @@ class CreateSystemUserTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('iq_system_user'))  {
-            Schema::table('iq_system_user', function(Blueprint $table)
+        if (Schema::hasTable('system_users'))  {
+            Schema::table('system_users', function(Blueprint $table)
             {
-                $table->dropForeign('iq_system_user_role_id_foreign');
+                $table->dropForeign('system_users_role_id_foreign');
             });
         }
-        Schema::dropIfExists('iq_system_user');
+        Schema::dropIfExists('system_users');
     }
 }

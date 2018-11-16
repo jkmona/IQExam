@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWechatTokensTable extends Migration
+class CreateArticlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +13,12 @@ class CreateWechatTokensTable extends Migration
      */
     public function up()
     {
-        Schema::create('wechat_tokens', function(Blueprint $table)
-        {
-            $table->engine ='InnoDB';
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('type');
-            $table->string('token', 100);
-            $table->string('open_id', 100)->nullable();
+            $table->string('title');
+            $table->text("body");
             $table->timestamps();
+            $table->timestamp("published_at")->nullable();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateWechatTokensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wechat_tokens');
+        Schema::dropIfExists('articles');
     }
 }

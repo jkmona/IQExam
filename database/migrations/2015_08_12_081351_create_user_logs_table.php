@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserLogTable extends Migration {
+class CreateUserLogsTable extends Migration {
 
     /**
      * Run the migrations.
@@ -12,18 +12,18 @@ class CreateUserLogTable extends Migration {
      */
     public function up()
     {
-        Schema::create('iq_user_logs', function(Blueprint $table)
+        Schema::create('user_logs', function(Blueprint $table)
         {
             $table->engine ='InnoDB';
-            $table->increments('user_log_id');
+            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->tinyInteger('type',false,true);
             $table->string('action', 500);
             $table->timestamps();
 
-            $table->index('user_id');
+            //$table->index('user_id');
 
-            $table->foreign('user_id')->references('user_id')->on('iq_user')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('restrict');
         });
     }
     /**
@@ -33,12 +33,12 @@ class CreateUserLogTable extends Migration {
      */
     public function down()
     {
-        if (Schema::hasTable('iq_user_log'))  {
-            Schema::table('iq_user_log', function(Blueprint $table)
+        if (Schema::hasTable('user_logs'))  {
+            Schema::table('user_logs', function(Blueprint $table)
             {
-                $table->dropForeign('iq_user_log_user_id_foreign');
+                $table->dropForeign('user_logs_user_id_foreign');
             });
         }
-        Schema::dropIfExists('iq_user_log');
+        Schema::dropIfExists('user_logs');
     }
 }

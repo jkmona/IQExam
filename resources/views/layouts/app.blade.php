@@ -55,11 +55,17 @@
         </nav>
 
         <main class="py-4">
+            @include('partials.flash')
             @yield('content')
         </main>
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        jQuery(function () {
+            $('.alert').not('.alert-important').delay(300).slideUp();
+        });
+    </script>
 </body>
 </html>
